@@ -6,11 +6,13 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation"; // Import usePathname
 import LoginModal from "./LoginModal";
+import SignupModal from "./SignupModal";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname(); // Get the current pathname
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
   const openLoginModal = () => {
     setIsLoginModalOpen(true);
@@ -18,6 +20,14 @@ export default function Navbar() {
 
   const closeLoginModal = () => {
     setIsLoginModalOpen(false);
+  };
+
+  const openSignUpModal = () => {
+    setIsSignUpModalOpen(true);
+  };
+
+  const closeSignUpModal = () => {
+    setIsSignUpModalOpen(false);
   };
 
   return (
@@ -66,12 +76,12 @@ export default function Navbar() {
             >
               Login
             </button>
-            <Link
-              href="/signup"
+            <button
+              onClick={openSignUpModal} // Open the modal
               className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700"
             >
               Sign Up
-            </Link>
+            </button>
           </div>
           <div className="md:hidden">
             <button
@@ -127,6 +137,7 @@ export default function Navbar() {
         </div>
       )}
       <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
+      <SignupModal isOpen={isSignUpModalOpen} onClose={closeSignUpModal} />
     </nav>
   );
 }
