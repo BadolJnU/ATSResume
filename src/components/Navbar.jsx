@@ -124,15 +124,18 @@ export default function Navbar() {
             >
               About
             </Link>
-            <Link href="/login" className="border-2 border-teal-600 px-4 py-2 hover:text-teal-600 w-fit">
+            <button
+              onClick={openLoginModal} // Open the modal
+              className="text-gray-600 hover:text-teal-600"
+            >
               Login
-            </Link>
-            <Link
-              href="/signup"
-              className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700 w-fit"
+            </button>
+            <button
+              onClick={openSignUpModal} // Open the modal
+              className="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700"
             >
               Sign Up
-            </Link>
+            </button>
           </div>
         </div>
       )}
